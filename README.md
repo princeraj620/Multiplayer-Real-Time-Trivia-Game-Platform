@@ -746,8 +746,6 @@ Grafana is provisioned with Prometheus, Loki and Jaeger as data sources and a **
 
 ## 9. Live Dashboard
 
-Open **https://localhost:8443/#/dashboard** (no login needed). It refreshes every second:
-
 - 🔌 **Players connected**, answers per second, live games, question fan-out time, engines with a healthy lease, alerts firing
 - 👑 **Live games**: phase, question, the **leader from etcd**, its fencing token, the **fence in Redis and in PostgreSQL**, the leader's heartbeat age, answers waiting in the stream
 - 📈 **Connections per gateway** over time (watch a crashed gateway's players move)
