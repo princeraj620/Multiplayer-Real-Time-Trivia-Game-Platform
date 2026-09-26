@@ -3,3 +3,4 @@ web/dist/
 .env
 *.log
 .DS_Store
+nginx/certs/
