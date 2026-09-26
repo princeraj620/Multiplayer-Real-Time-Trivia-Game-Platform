@@ -1,0 +1,29 @@
+# Prometheus scrapes every service's /metrics every 5 seconds and evaluates the alert rules.
+global:
+  scrape_interval: 5s
+  evaluation_interval: 5s
+
+rule_files:
+  - /etc/prometheus/alerts.yml
+
+alerting:
+  alertmanagers:
+    - static_configs:
+        - targets: ['alertmanager:9093']
+
+scrape_configs:
+  - job_name: gateways
+    static_configs:
+      - targets: ['gateway1:3000', 'gateway2:3000', 'gateway3:3000']
+  - job_name: engines
+    static_configs:
+      - targets: ['engine1:3000', 'engine2:3000', 'engine3:3000']
+  - job_name: lobby
+    static_configs:
+      - targets: ['lobby1:3000', 'lobby2:3000']
+  - job_name: auth
+    static_configs:
+      - targets: ['auth1:3000', 'auth2:3000']
+  - job_name: etcd
+    static_configs:
+      - targets: ['etcd1:2379', 'etcd2:2379', 'etcd3:2379']

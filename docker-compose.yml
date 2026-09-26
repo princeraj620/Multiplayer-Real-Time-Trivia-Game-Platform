@@ -1,0 +1,308 @@
+# BuzzArena: 24 services from one command.  docker compose up --build -d
+#
+#   Edge ......... nginx (TLS, WebSocket upgrade, load balancing)
+#   Services ..... auth ×2, lobby ×2, gateway ×3 (WebSockets), engine ×3 (game leaders)
+#   Data ......... postgres + read replica, redis, etcd ×3 (Raft)
+#   Observability  prometheus, alertmanager, grafana, loki, jaeger, otel-collector
+#
+# Every setting has a default here; override them in a .env file (see .env.example).
+
+x-service: &service
+  build: ./services
+  image: buzzarena-services
+  restart: unless-stopped
+  init: true
+  ulimits:
+    nofile: { soft: 65535, hard: 65535 }
+  depends_on:
+    postgres: { condition: service_healthy }
+    redis: { condition: service_healthy }
+    etcd1: { condition: service_started }
+  healthcheck:
+    test: ['CMD', 'wget', '-qO-', 'http://127.0.0.1:3000/health']
+    interval: 5s
+    timeout: 3s
+    retries: 5
+    start_period: 10s
+
+x-env: &env
+  PORT: 3000
+  LOG_LEVEL: ${LOG_LEVEL:-info}
+  REDIS_URL: redis://:${REDIS_PASSWORD:-buzzarena}@redis:6379
+  PG_PRIMARY_URL: postgres://buzzarena:${POSTGRES_PASSWORD:-buzzarena}@postgres:5432/buzzarena
+  PG_REPLICA_URL: postgres://buzzarena:${POSTGRES_PASSWORD:-buzzarena}@pg-replica:5432/buzzarena
+  ETCD_ENDPOINTS: http://etcd1:2379,http://etcd2:2379,http://etcd3:2379
+  AUTH_JWKS_URL: http://auth1:3000/api/auth/.well-known/jwks.json,http://auth2:3000/api/auth/.well-known/jwks.json
+  ALLOWED_ORIGINS: https://localhost:${HTTPS_PORT:-8443},http://localhost:5173
+  DATA_KEYS: ${DATA_KEYS:-k1:0Ghvzq4sVdEkVSe0lX1U2F1cmWgC4Xl9d0ZyH2uX9R4=}
+  DATA_KEY_ACTIVE: ${DATA_KEY_ACTIVE:-k1}
+  ACCESS_TOKEN_TTL_SEC: ${ACCESS_TOKEN_TTL_SEC:-900}
+  QUESTION_SEC: ${QUESTION_SEC:-10}
+  COUNTDOWN_SEC: ${COUNTDOWN_SEC:-5}
+  REVEAL_SEC: ${REVEAL_SEC:-4}
+  LEADERBOARD_SEC: ${LEADERBOARD_SEC:-4}
+  ANSWER_GRACE_MS: ${ANSWER_GRACE_MS:-300}
+  LEADER_LEASE_TTL_SEC: ${LEADER_LEASE_TTL_SEC:-5}
+  SELF_FENCING: ${SELF_FENCING:-true}
+  LOADTEST_MODE: ${LOADTEST_MODE:-false}
+  LOADTEST_SECRET: ${LOADTEST_SECRET:-}
+  LOGIN_RATE_BURST: ${LOGIN_RATE_BURST:-10}
+  LOGIN_RATE_PER_SEC: ${LOGIN_RATE_PER_SEC:-0.2}
+  OTEL_EXPORTER_OTLP_ENDPOINT: http://otel-collector:4318
+  TRACE_SAMPLE_RATIO: ${TRACE_SAMPLE_RATIO:-1}
+  LOKI_URL: http://loki:3100
+  PROMETHEUS_URL: http://prometheus:9090
+  PROMETHEUS_UI_URL: http://localhost:9090
+  JAEGER_UI_URL: http://localhost:16686
+  GRAFANA_URL: http://localhost:3000
+
+services:
+  # ---------------------------------------------------------------- data
+  postgres:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: buzzarena
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-buzzarena}
+      POSTGRES_DB: buzzarena
+      REPLICATION_PASSWORD: ${REPLICATION_PASSWORD:-replicator}
+    command: ['postgres', '-c', 'max_connections=200', '-c', 'wal_level=replica']
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./db/00-replication.sh:/docker-entrypoint-initdb.d/00-replication.sh:ro
+      - ./db/schema.sql:/docker-entrypoint-initdb.d/01-schema.sql:ro
+    ports: ['5438:5432']
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U buzzarena -d buzzarena']
+      interval: 3s
+      timeout: 3s
+      retries: 20
+
+  pg-replica:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      PGDATA: /var/lib/postgresql/data
+      PRIMARY_HOST: postgres
+      REPLICATION_PASSWORD: ${REPLICATION_PASSWORD:-replicator}
+    entrypoint: ['/replica-entrypoint.sh']
+    volumes:
+      - pgreplica:/var/lib/postgresql/data
+      - ./db/replica-entrypoint.sh:/replica-entrypoint.sh:ro
+    depends_on:
+      postgres: { condition: service_healthy }
+    ports: ['5439:5432']
+
+  redis:
+    image: redis:7-alpine
+    restart: unless-stopped
+    command: ['redis-server', '--requirepass', '${REDIS_PASSWORD:-buzzarena}', '--appendonly', 'yes', '--appendfsync', 'everysec']
+    volumes: ['redisdata:/data']
+    ports: ['6383:6379']
+    healthcheck:
+      test: ['CMD', 'redis-cli', '-a', '${REDIS_PASSWORD:-buzzarena}', '--no-auth-warning', 'ping']
+      interval: 3s
+      timeout: 3s
+      retries: 20
+
+  # Three etcd members = a Raft cluster that survives one failure (2 of 3 is a majority).
+  etcd1: &etcd
+    image: quay.io/coreos/etcd:v3.5.17
+    restart: unless-stopped
+    command:
+      - etcd
+      - --name=etcd1
+      - --data-dir=/etcd-data
+      - --listen-client-urls=http://0.0.0.0:2379
+      - --advertise-client-urls=http://etcd1:2379
+      - --listen-peer-urls=http://0.0.0.0:2380
+      - --initial-advertise-peer-urls=http://etcd1:2380
+      - --initial-cluster=etcd1=http://etcd1:2380,etcd2=http://etcd2:2380,etcd3=http://etcd3:2380
+      - --initial-cluster-state=new
+      - --initial-cluster-token=buzzarena
+      - --heartbeat-interval=250
+      - --election-timeout=1500
+      - --listen-metrics-urls=http://0.0.0.0:2381
+      - --log-level=warn
+    volumes: ['etcd1:/etcd-data']
+    ports: ['2379:2379']
+  etcd2:
+    <<: *etcd
+    command:
+      - etcd
+      - --name=etcd2
+      - --data-dir=/etcd-data
+      - --listen-client-urls=http://0.0.0.0:2379
+      - --advertise-client-urls=http://etcd2:2379
+      - --listen-peer-urls=http://0.0.0.0:2380
+      - --initial-advertise-peer-urls=http://etcd2:2380
+      - --initial-cluster=etcd1=http://etcd1:2380,etcd2=http://etcd2:2380,etcd3=http://etcd3:2380
+      - --initial-cluster-state=new
+      - --initial-cluster-token=buzzarena
+      - --heartbeat-interval=250
+      - --election-timeout=1500
+      - --listen-metrics-urls=http://0.0.0.0:2381
+      - --log-level=warn
+    volumes: ['etcd2:/etcd-data']
+    ports: ['2479:2379']
+  etcd3:
+    <<: *etcd
+    command:
+      - etcd
+      - --name=etcd3
+      - --data-dir=/etcd-data
+      - --listen-client-urls=http://0.0.0.0:2379
+      - --advertise-client-urls=http://etcd3:2379
+      - --listen-peer-urls=http://0.0.0.0:2380
+      - --initial-advertise-peer-urls=http://etcd3:2380
+      - --initial-cluster=etcd1=http://etcd1:2380,etcd2=http://etcd2:2380,etcd3=http://etcd3:2380
+      - --initial-cluster-state=new
+      - --initial-cluster-token=buzzarena
+      - --heartbeat-interval=250
+      - --election-timeout=1500
+      - --listen-metrics-urls=http://0.0.0.0:2381
+      - --log-level=warn
+    volumes: ['etcd3:/etcd-data']
+    ports: ['2579:2379']
+
+  # ---------------------------------------------------------------- one-off setup
+  seed:
+    <<: *service
+    restart: 'no'
+    healthcheck: { disable: true }
+    environment: { <<: *env, SERVICE: seed, INSTANCE_ID: seed }
+
+  # ---------------------------------------------------------------- services
+  auth1:
+    <<: *service
+    environment: { <<: *env, SERVICE: auth, INSTANCE_ID: auth-1 }
+  auth2:
+    <<: *service
+    environment: { <<: *env, SERVICE: auth, INSTANCE_ID: auth-2 }
+
+  lobby1:
+    <<: *service
+    environment: { <<: *env, SERVICE: lobby, INSTANCE_ID: lobby-1 }
+  lobby2:
+    <<: *service
+    environment: { <<: *env, SERVICE: lobby, INSTANCE_ID: lobby-2 }
+
+  gateway1:
+    <<: *service
+    environment: { <<: *env, SERVICE: gateway, INSTANCE_ID: gateway-1 }
+  gateway2:
+    <<: *service
+    environment: { <<: *env, SERVICE: gateway, INSTANCE_ID: gateway-2 }
+  gateway3:
+    <<: *service
+    environment: { <<: *env, SERVICE: gateway, INSTANCE_ID: gateway-3 }
+
+  engine1:
+    <<: *service
+    environment: { <<: *env, SERVICE: engine, INSTANCE_ID: engine-1 }
+  engine2:
+    <<: *service
+    environment: { <<: *env, SERVICE: engine, INSTANCE_ID: engine-2 }
+  engine3:
+    <<: *service
+    environment: { <<: *env, SERVICE: engine, INSTANCE_ID: engine-3 }
+
+  nginx:
+    build: { context: ., dockerfile: nginx/Dockerfile }
+    image: buzzarena-nginx
+    restart: unless-stopped
+    ulimits:
+      nofile: { soft: 65535, hard: 65535 }
+    environment:
+      HTTP_PORT: 80
+      HTTPS_PORT: 443
+      PUBLIC_HTTPS_PORT: ${HTTPS_PORT:-8443}
+      CERT_DIR: /etc/nginx/certs
+      WEB_ROOT: /usr/share/nginx/html
+      AUTH1: auth1:3000
+      AUTH2: auth2:3000
+      LOBBY1: lobby1:3000
+      LOBBY2: lobby2:3000
+      GATEWAY1: gateway1:3000
+      GATEWAY2: gateway2:3000
+      GATEWAY3: gateway3:3000
+      API_RATE_PER_IP: ${API_RATE_PER_IP:-50}
+      API_BURST_PER_IP: ${API_BURST_PER_IP:-100}
+      AUTH_RATE_PER_IP: ${AUTH_RATE_PER_IP:-5}
+      AUTH_BURST_PER_IP: ${AUTH_BURST_PER_IP:-20}
+      WS_CONN_PER_IP: ${WS_CONN_PER_IP:-20}
+    ports:
+      - '${HTTP_PORT:-8080}:80'
+      - '${HTTPS_PORT:-8443}:443'
+    depends_on: [auth1, auth2, lobby1, lobby2, gateway1, gateway2, gateway3]
+
+  # ---------------------------------------------------------------- observability
+  otel-collector:
+    image: otel/opentelemetry-collector:0.112.0
+    restart: unless-stopped
+    command: ['--config=/etc/otelcol/config.yml']
+    volumes: ['./observability/otel-collector/config.yml:/etc/otelcol/config.yml:ro']
+    depends_on: [jaeger]
+
+  jaeger:
+    image: jaegertracing/all-in-one:1.62.0
+    restart: unless-stopped
+    environment:
+      COLLECTOR_OTLP_ENABLED: 'true'
+      MEMORY_MAX_TRACES: '200000'
+    ports: ['16686:16686']
+
+  prometheus:
+    image: prom/prometheus:v2.55.1
+    restart: unless-stopped
+    command: ['--config.file=/etc/prometheus/prometheus.yml', '--storage.tsdb.retention.time=2d', '--web.enable-lifecycle']
+    volumes:
+      - ./observability/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - ./observability/prometheus/alerts.yml:/etc/prometheus/alerts.yml:ro
+    ports: ['9090:9090']
+
+  alertmanager:
+    image: prom/alertmanager:v0.27.0
+    restart: unless-stopped
+    volumes: ['./observability/alertmanager/alertmanager.yml:/etc/alertmanager/alertmanager.yml:ro']
+    ports: ['9093:9093']
+
+  loki:
+    image: grafana/loki:3.2.1
+    restart: unless-stopped
+    command: ['-config.file=/etc/loki/loki.yml']
+    volumes: ['./observability/loki/loki.yml:/etc/loki/loki.yml:ro']
+    ports: ['3100:3100']
+
+  grafana:
+    image: grafana/grafana:11.3.0
+    restart: unless-stopped
+    environment:
+      GF_AUTH_ANONYMOUS_ENABLED: 'true'
+      GF_AUTH_ANONYMOUS_ORG_ROLE: Viewer
+      GF_SECURITY_ADMIN_PASSWORD: ${GRAFANA_ADMIN_PASSWORD:-buzzarena}
+      GF_USERS_DEFAULT_THEME: dark
+    volumes:
+      - ./observability/grafana/provisioning:/etc/grafana/provisioning:ro
+      - ./observability/grafana/dashboards:/var/lib/grafana/dashboards:ro
+    ports: ['3000:3000']
+    depends_on: [prometheus, loki, jaeger]
+
+  # ---------------------------------------------------------------- load tests (optional)
+  k6:
+    image: grafana/k6:0.54.0
+    profiles: [loadtest]
+    environment:
+      BASE_URL: https://nginx:443
+      ORIGIN: https://localhost:${HTTPS_PORT:-8443}
+      LOADTEST_SECRET: ${LOADTEST_SECRET:-}
+    depends_on: [nginx]
+    volumes: ['./load-tests/k6:/scripts:ro']
+
+volumes:
+  pgdata:
+  pgreplica:
+  redisdata:
+  etcd1:
+  etcd2:
+  etcd3:

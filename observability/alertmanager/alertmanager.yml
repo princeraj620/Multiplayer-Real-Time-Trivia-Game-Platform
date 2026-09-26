@@ -1,0 +1,10 @@
+# Alertmanager groups alerts and would send them to Slack, email or a pager. Here it only keeps them
+# (see http://localhost:9093); add a receiver to send them somewhere.
+route:
+  receiver: default
+  group_by: [alertname]
+  group_wait: 5s
+  group_interval: 30s
+  repeat_interval: 1h
+receivers:
+  - name: default

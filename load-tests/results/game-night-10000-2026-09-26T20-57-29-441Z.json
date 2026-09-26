@@ -1,0 +1,3231 @@
+{
+  "summary": {
+    "players": 10000,
+    "connectedIn": "31.8 s",
+    "failedToConnect": 0,
+    "questions": 6,
+    "questionFanout_p50_p95_p99": "255 / 435 / 560 ms",
+    "answerAck_p50_p95_p99": "129 / 970 / 1431 ms",
+    "answersAcked": 52229,
+    "answersCounted": 52229,
+    "answersLost": 0,
+    "peakAnswersPerSec": 1604,
+    "peakMessagesOutPerSec": 32746,
+    "peakConnections": 10000,
+    "maxStreamLag": 27,
+    "missedMessages": 0,
+    "reconnects": 0,
+    "sawFinalResults": 10000,
+    "resultsSavedFor": 10000,
+    "gameDurationSec": 120,
+    "gatewayMemory": "gateway-1 283 MB, gateway-2 290 MB, gateway-3 286 MB",
+    "chaos": []
+  },
+  "rows": [
+    {
+      "q": 1,
+      "reached": 10000,
+      "fanout": {
+        "p50": 342,
+        "p95": 511,
+        "p99": 630,
+        "max": 640
+      },
+      "answersAcked": 7833,
+      "answersCounted": 7833,
+      "peakPerSec": 1346,
+      "lastThreeSecShare": 50,
+      "survivors": 6030,
+      "revealAfterDeadlineMs": 1489,
+      "leader": "engine-2"
+    },
+    {
+      "q": 2,
+      "reached": 10000,
+      "fanout": {
+        "p50": 234,
+        "p95": 426,
+        "p99": 446,
+        "max": 448
+      },
+      "answersAcked": 9018,
+      "answersCounted": 9018,
+      "peakPerSec": 2030,
+      "lastThreeSecShare": 57,
+      "survivors": 4191,
+      "revealAfterDeadlineMs": 856,
+      "leader": "engine-2"
+    },
+    {
+      "q": 3,
+      "reached": 10000,
+      "fanout": {
+        "p50": 272,
+        "p95": 408,
+        "p99": 625,
+        "max": 637
+      },
+      "answersAcked": 9064,
+      "answersCounted": 9064,
+      "peakPerSec": 2048,
+      "lastThreeSecShare": 56,
+      "survivors": 2939,
+      "revealAfterDeadlineMs": 1109,
+      "leader": "engine-2"
+    },
+    {
+      "q": 4,
+      "reached": 10000,
+      "fanout": {
+        "p50": 283,
+        "p95": 434,
+        "p99": 460,
+        "max": 466
+      },
+      "answersAcked": 8091,
+      "answersCounted": 8091,
+      "peakPerSec": 1578,
+      "lastThreeSecShare": 50,
+      "survivors": 1836,
+      "revealAfterDeadlineMs": 1086,
+      "leader": "engine-2"
+    },
+    {
+      "q": 5,
+      "reached": 10000,
+      "fanout": {
+        "p50": 244,
+        "p95": 383,
+        "p99": 412,
+        "max": 414
+      },
+      "answersAcked": 8638,
+      "answersCounted": 8638,
+      "peakPerSec": 1906,
+      "lastThreeSecShare": 54,
+      "survivors": 1272,
+      "revealAfterDeadlineMs": 1409,
+      "leader": "engine-2"
+    },
+    {
+      "q": 6,
+      "reached": 10000,
+      "fanout": {
+        "p50": 199,
+        "p95": 302,
+        "p99": 311,
+        "max": 312
+      },
+      "answersAcked": 9585,
+      "answersCounted": 9585,
+      "peakPerSec": 2442,
+      "lastThreeSecShare": 59,
+      "survivors": 932,
+      "revealAfterDeadlineMs": 1528,
+      "leader": "engine-2"
+    }
+  ],
+  "samples": [
+    {
+      "at": 1790456129830,
+      "gateways": [
+        {
+          "id": "gateway-1",
+          "conns": 3333,
+          "aps": 0,
+          "sent": 6666,
+          "mem": 209
+        },
+        {
+          "id": "gateway-2",
+          "conns": 3333,
+          "aps": 0,
+          "sent": 6666,
+          "mem": 201
+        },
+        {
+          "id": "gateway-3",
+          "conns": 3334,
+          "aps": 0,
+          "sent": 10002,
+          "mem": 192
+        }
+      ],
+      "lag": [
+        0
+      ]
+    },
+    {
+      "at": 1790456130829,
+      "gateways": [
+        {
+          "id": "gateway-1",
+          "conns": 3333,
+          "aps": 0,
+          "sent": 0,
+          "mem": 209
+        },
+        {
+          "id": "gateway-2",
+          "conns": 3333,
+          "aps": 0,
+          "sent": 0,
+          "mem": 201
+        },
+        {
+          "id": "gateway-3",
+          "conns": 3334,
+          "aps": 0,
+          "sent": 0,
+          "mem": 192
+        }
+      ],
+      "lag": [
+        0
+      ]
+    },
+    {
+      "at": 1790456131829,
+      "gateways": [
+        {
+          "id": "gateway-1",
+          "conns": 3333,
+          "aps": 0,
+          "sent": 0,
+          "mem": 209
+        },
+        {
+          "id": "gateway-2",
+          "conns": 3333,
+          "aps": 0,
+          "sent": 0,
+          "mem": 201
+        },
+        {
+          "id": "gateway-3",
+          "conns": 3334,
+          "aps": 0,
+          "sent": 0,
+          "mem": 192
+        }
+      ],
+      "lag": [
+        0
+      ]
+    },
+    {
+      "at": 1790456132829,
+      "gateways": [
+        {
+          "id": "gateway-1",
+          "conns": 3333,
+          "aps": 0,
+          "sent": 0,
+          "mem": 209
+        },
+        {
+          "id": "gateway-2",
+          "conns": 3333,
+          "aps": 0,
+          "sent": 0,
+          "mem": 201
+        },
+        {
+          "id": "gateway-3",
+          "conns": 3334,
+          "aps": 0,
+          "sent": 0,
+          "mem": 192
+        }
+      ],
+      "lag": [
+        0
+      ]
+    },
+    {
+      "at": 1790456133831,
+      "gateways": [
+        {
+          "id": "gateway-1",
+          "conns": 3333,
+          "aps": 0,
+          "sent": 0,
+          "mem": 209
+        },
+        {
+          "id": "gateway-2",
+          "conns": 3333,
+          "aps": 0,
+          "sent": 0,
+          "mem": 201
+        },
+        {
+          "id": "gateway-3",
+          "conns": 3334,
+          "aps": 0,
+          "sent": 0,
+          "mem": 192
+        }
+      ],
+      "lag": [
+        0
+      ]
+    },
+    {
+      "at": 1790456134848,
+      "gateways": [
+        {
+          "id": "gateway-1",
+          "conns": 3333,
+          "aps": 0,
+          "sent": 6666,
+          "mem": 209
+        },
+        {
+          "id": "gateway-2",
+          "conns": 3333,
+          "aps": 1,
+          "sent": 6667,
+          "mem": 201
+        },
+        {
+          "id": "gateway-3",
+          "conns": 3334,
+          "aps": 1,
+          "sent": 6669,
+          "mem": 192
+        }
+      ],
+      "lag": [
+        0
+      ]
+    },
+    {
+      "at": 1790456135834,
+      "gateways": [
+        {
+          "id": "gateway-1",
+          "conns": 3333,
+          "aps": 124,
+          "sent": 6790,
+          "mem": 209
+        },
+        {
+          "id": "gateway-2",
+          "conns": 3333,
+          "aps": 177,
+          "sent": 6843,
+          "mem": 201
+        },
+        {
+          "id": "gateway-3",
+          "conns": 3334,
+          "aps": 119,
+          "sent": 6787,
+          "mem": 192
+        }
+      ],
+      "lag": [
+        0
+      ]
+    },
+    {
+      "at": 1790456136993,
+      "gateways": [
+        {
+          "id": "gateway-1",
+          "conns": 3333,
+          "aps": 163,
+          "sent": 6829,
+          "mem": 210
+        },
+        {
+          "id": "gateway-2",
+          "conns": 3333,
+          "aps": 174,
+          "sent": 6840,
+          "mem": 201
+        },
+        {
+          "id": "gateway-3",
+          "conns": 3334,
+          "aps": 155,
+          "sent": 6823,
+          "mem": 192
+        }
+      ],
+      "lag": [
+        0
+      ]
+    },
+    {
+      "at": 1790456137844,
+      "gateways": [
+        {
+          "id": "gateway-1",
+          "conns": 3333,
+          "aps": 162,
+          "sent": 6828,
+          "mem": 210
+        },
+        {
+          "id": "gateway-2",
+          "conns": 3333,
+          "aps": 170,
+          "sent": 6836,
+          "mem": 202
+        },
+        {
+          "id": "gateway-3",
+          "conns": 3334,
+          "aps": 149,
+          "sent": 6817,
+          "mem": 192
+        }
+      ],
+      "lag": [
+        0
+      ]
+    },
+    {
+      "at": 1790456139576,
+      "gateways": [
+        {
+          "id": "gateway-1",
+          "conns": 3333,
+          "aps": 177,
+          "sent": 6843,
+          "mem": 210
+        },
+        {
+          "id": "gateway-2",
+          "conns": 3333,
+          "aps": 191,
+          "sent": 6857,
+          "mem": 201
+        },
+        {
+          "id": "gateway-3",
+          "conns": 3334,
+          "aps": 162,
+          "sent": 6830,
+          "mem": 193
+        }
+      ],
+      "lag": [
+        0
+      ]
+    },
+    {
+      "at": 1790456140211,
+      "gateways": [
+        {
+          "id": "gateway-1",
+          "conns": 3333,
+          "aps": 192,
+          "sent": 6858,
+          "mem": 210
+        },
+        {
+          "id": "gateway-2",
+          "conns": 3333,
+          "aps": 106,
+          "sent": 6772,
+          "mem": 201
+        },
+        {
+          "id": "gateway-3",
+          "conns": 3334,
+          "aps": 192,
+          "sent": 6860,
+          "mem": 193
+        }
+      ],
+      "lag": [
+        0
+      ]
+    },
+    {
+      "at": 1790456141210,
+      "gateways": [
+        {
+          "id": "gateway-1",
+          "conns": 3333,
+          "aps": 227,
+          "sent": 6893,
+          "mem": 211
+        },
+        {
+          "id": "gateway-2",
+          "conns": 3333,
+          "aps": 300,
+          "sent": 6966,
+          "mem": 202
+        },
+        {
+          "id": "gateway-3",
+          "conns": 3334,
+          "aps": 224,
+          "sent": 6892,
+          "mem": 194
+        }
+      ],
+      "lag": [
+        0
+      ]
+    },
+    {
+      "at": 1790456142246,
+      "gateways": [
+        {
+          "id": "gateway-1",
+          "conns": 3333,
+          "aps": 304,
+          "sent": 6970,
+          "mem": 212
+        },
+        {
+          "id": "gateway-2",
+          "conns": 3333,
+          "aps": 343,
+          "sent": 7009,
+          "mem": 202
+        },
+        {
+          "id": "gateway-3",
+          "conns": 3334,
+          "aps": 332,
+          "sent": 7000,
+          "mem": 195
+        }
+      ],
+      "lag": [
+        0
+      ]
+    },
+    {
+      "at": 1790456143400,
+      "gateways": [
+        {
+          "id": "gateway-1",
+          "conns": 3333,
+          "aps": 451,
+          "sent": 7117,
+          "mem": 213
+        },
+        {
+          "id": "gateway-2",
+          "conns": 3333,
+          "aps": 326,
+          "sent": 6992,
+          "mem": 203
+        },
+        {
+          "id": "gateway-3",
+          "conns": 3334,
+          "aps": 414,
+          "sent": 7082,
+          "mem": 195
+        }
+      ],
+      "lag": [
+        0
+      ]
+    },
+    {
+      "at": 1790456145772,
+      "gateways": [
+        {
+          "id": "gateway-1",
+          "conns": 3333,
+          "aps": 83,
+          "sent": 8832,
+          "mem": 214
+        },
+        {
+          "id": "gateway-2",
+          "conns": 3333,
+          "aps": 0,
+          "sent": 6363,
+          "mem": 204
+        },
+        {
+          "id": "gateway-3",
+          "conns": 3334,
+          "aps": 0,
+          "sent": 9819,
+          "mem": 196
+        }
+      ],
+      "lag": [
+        0
+      ]
+    },
+    {
+      "at": 1790456146757,
+      "gateways": [
+        {
+          "id": "gateway-1",
+          "conns": 3333,
+          "aps": 0,
+          "sent": 1833,
+          "mem": 214
+        },
+        {
+          "id": "gateway-2",
+          "conns": 3333,
+          "aps": 0,
+          "sent": 833,
+          "mem": 204
+        },
+        {
+          "id": "gateway-3",
+          "conns": 3334,
+          "aps": 0,
+          "sent": 834,
+          "mem": 196
+        }
+      ],
+      "lag": [
+        0
+      ]
+    },
+    {
+      "at": 1790456147756,
+      "gateways": [
+        {
+          "id": "gateway-1",
+          "conns": 3333,
+          "aps": 0,
+          "sent": 0,
+          "mem": 214
+        },
+        {
+          "id": "gateway-2",
+          "conns": 3333,
+          "aps": 0,
+          "sent": 0,
+          "mem": 204
+        },
+        {
+          "id": "gateway-3",
+          "conns": 3334,
+          "aps": 0,
+          "sent": 0,
+          "mem": 196
+        }
+      ],
+      "lag": [
+        0
+      ]
+    },
+    {
+      "at": 1790456148997,
+      "gateways": [
+        {
+          "id": "gateway-1",
+          "conns": 3333,
+          "aps": 0,
+          "sent": 0,
+          "mem": 214
+        },
+        {
+          "id": "gateway-2",
+          "conns": 3333,
+          "aps": 0,
+          "sent": 0,
+          "mem": 204
+        },
+        {
+          "id": "gateway-3",
+          "conns": 3334,
+          "aps": 0,
+          "sent": 0,
+          "mem": 196
+        }
+      ],
+      "lag": [
+        0
+      ]
+    },
+    {
+      "at": 1790456149996,
+      "gateways": [
+        {
+          "id": "gateway-1",
+          "conns": 3333,
+          "aps": 0,
+          "sent": 3333,
+          "mem": 214
+        },
+        {
+          "id": "gateway-2",
+          "conns": 3333,
+          "aps": 0,
+          "sent": 3333,
+          "mem": 204
+        },
+        {
+          "id": "gateway-3",
+          "conns": 3334,
+          "aps": 0,
+          "sent": 3334,
+          "mem": 196
+        }
+      ],
+      "lag": [
+        0
+      ]
+    },
+    {
+      "at": 1790456150998,
+      "gateways": [
+        {
+          "id": "gateway-1",
+          "conns": 3333,
+          "aps": 0,
+          "sent": 0,
+          "mem": 214
+        },
+        {
+          "id": "gateway-2",
+          "conns": 3333,
+          "aps": 0,
+          "sent": 0,
+          "mem": 204
+        },
+        {
+          "id": "gateway-3",
+          "conns": 3334,
+          "aps": 0,
+          "sent": 0,
+          "mem": 196
+        }
+      ],
+      "lag": [
+        0
+      ]
+    },
+    {
+      "at": 1790456151997,
+      "gateways": [
+        {
+          "id": "gateway-1",
+          "conns": 3333,
+          "aps": 0,
+          "sent": 0,
+          "mem": 214
+        },
+        {
+          "id": "gateway-2",
+          "conns": 3333,
+          "aps": 0,
+          "sent": 0,
+          "mem": 204
+        },
+        {
+          "id": "gateway-3",
+          "conns": 3334,
+          "aps": 0,
+          "sent": 0,
+          "mem": 196
+        }
+      ],
+      "lag": [
+        0
+      ]
+    },
+    {
+      "at": 1790456153288,
+      "gateways": [
+        {
+          "id": "gateway-1",
+          "conns": 3333,
+          "aps": 3,
+          "sent": 6669,
+          "mem": 214
+        },
+        {
+          "id": "gateway-2",
+          "conns": 3333,
+          "aps": 0,
+          "sent": 0,
+          "mem": 204
+        },
+        {
+          "id": "gateway-3",
+          "conns": 3334,
+          "aps": 9,
+          "sent": 6677,
+          "mem": 199
+        }
+      ],
+      "lag": [
+        0
+      ]
+    },
+    {
+      "at": 1790456154264,
+      "gateways": [
+        {
+          "id": "gateway-1",
+          "conns": 3333,
+          "aps": 195,
+          "sent": 6861,
+          "mem": 214
+        },
+        {
+          "id": "gateway-2",
+          "conns": 3333,
+          "aps": 90,
+          "sent": 10089,
+          "mem": 204
+        },
+        {
+          "id": "gateway-3",
+          "conns": 3334,
+          "aps": 9,
+          "sent": 6677,
+          "mem": 199
+        }
+      ],
+      "lag": [
+        0
+      ]
+    },
+    {
+      "at": 1790456155271,
+      "gateways": [
+        {
+          "id": "gateway-1",
+          "conns": 3333,
+          "aps": 156,
+          "sent": 6822,
+          "mem": 214
+        },
+        {
+          "id": "gateway-2",
+          "conns": 3333,
+          "aps": 144,
+          "sent": 6810,
+          "mem": 204
+        },
+        {
+          "id": "gateway-3",
+          "conns": 3334,
+          "aps": 218,
+          "sent": 6886,
+          "mem": 199
+        }
+      ],
+      "lag": [
+        8
+      ]
+    },
+    {
+      "at": 1790456156272,
+      "gateways": [
+        {
+          "id": "gateway-1",
+          "conns": 3333,
+          "aps": 162,
+          "sent": 6828,
+          "mem": 215
+        },
+        {
+          "id": "gateway-2",
+          "conns": 3333,
+          "aps": 177,
+          "sent": 6843,
+          "mem": 204
+        },
+        {
+          "id": "gateway-3",
+          "conns": 3334,
+          "aps": 154,
+          "sent": 6822,
+          "mem": 201
+        }
+      ],
+      "lag": [
+        0
+      ]
+    },
+    {
+      "at": 1790456157310,
+      "gateways": [
+        {
+          "id": "gateway-1",
+          "conns": 3333,
+          "aps": 182,
+          "sent": 6848,
+          "mem": 214
+        },
+        {
+          "id": "gateway-2",
+          "conns": 3333,
+          "aps": 193,
+          "sent": 6859,
+          "mem": 204
+        },
+        {
+          "id": "gateway-3",
+          "conns": 3334,
+          "aps": 145,
+          "sent": 6813,
+          "mem": 201
+        }
+      ],
+      "lag": [
+        0
+      ]
+    },
+    {
+      "at": 1790456158289,
+      "gateways": [
+        {
+          "id": "gateway-1",
+          "conns": 3333,
+          "aps": 277,
+          "sent": 6943,
+          "mem": 214
+        },
+        {
+          "id": "gateway-2",
+          "conns": 3333,
+          "aps": 200,
+          "sent": 6866,
+          "mem": 204
+        },
+        {
+          "id": "gateway-3",
+          "conns": 3334,
+          "aps": 270,
+          "sent": 6938,
+          "mem": 202
+        }
+      ],
+      "lag": [
+        0
+      ]
+    },
+    {
+      "at": 1790456159284,
+      "gateways": [
+        {
+          "id": "gateway-1",
+          "conns": 3333,
+          "aps": 223,
+          "sent": 6889,
+          "mem": 214
+        },
+        {
+          "id": "gateway-2",
+          "conns": 3333,
+          "aps": 208,
+          "sent": 6874,
+          "mem": 205
+        },
+        {
+          "id": "gateway-3",
+          "conns": 3334,
+          "aps": 268,
+          "sent": 6936,
+          "mem": 202
+        }
+      ],
+      "lag": [
+        0
+      ]
+    },
+    {
+      "at": 1790456160326,
+      "gateways": [
+        {
+          "id": "gateway-1",
+          "conns": 3333,
+          "aps": 236,
+          "sent": 6902,
+          "mem": 214
+        },
+        {
+          "id": "gateway-2",
+          "conns": 3333,
+          "aps": 269,
+          "sent": 6935,
+          "mem": 204
+        },
+        {
+          "id": "gateway-3",
+          "conns": 3334,
+          "aps": 251,
+          "sent": 6919,
+          "mem": 202
+        }
+      ],
+      "lag": [
+        0
+      ]
+    },
+    {
+      "at": 1790456161367,
+      "gateways": [
+        {
+          "id": "gateway-1",
+          "conns": 3333,
+          "aps": 382,
+          "sent": 7048,
+          "mem": 215
+        },
+        {
+          "id": "gateway-2",
+          "conns": 3333,
+          "aps": 349,
+          "sent": 7015,
+          "mem": 205
+        },
+        {
+          "id": "gateway-3",
+          "conns": 3334,
+          "aps": 357,
+          "sent": 7025,
+          "mem": 202
+        }
+      ],
+      "lag": [
+        0
+      ]
+    },
+    {
+      "at": 1790456162655,
+      "gateways": [
+        {
+          "id": "gateway-1",
+          "conns": 3333,
+          "aps": 592,
+          "sent": 7258,
+          "mem": 216
+        },
+        {
+          "id": "gateway-2",
+          "conns": 3333,
+          "aps": 396,
+          "sent": 7062,
+          "mem": 206
+        },
+        {
+          "id": "gateway-3",
+          "conns": 3334,
+          "aps": 562,
+          "sent": 7230,
+          "mem": 202
+        }
+      ],
+      "lag": [
+        0
+      ]
+    },
+    {
+      "at": 1790456164649,
+      "gateways": [
+        {
+          "id": "gateway-1",
+          "conns": 3333,
+          "aps": 0,
+          "sent": 6666,
+          "mem": 217
+        },
+        {
+          "id": "gateway-2",
+          "conns": 3333,
+          "aps": 248,
+          "sent": 8622,
+          "mem": 207
+        },
+        {
+          "id": "gateway-3",
+          "conns": 3334,
+          "aps": 0,
+          "sent": 6668,
+          "mem": 204
+        }
+      ],
+      "lag": [
+        0
+      ]
+    },
+    {
+      "at": 1790456165642,
+      "gateways": [
+        {
+          "id": "gateway-1",
+          "conns": 3333,
+          "aps": 0,
+          "sent": 0,
+          "mem": 217
+        },
+        {
+          "id": "gateway-2",
+          "conns": 3333,
+          "aps": 0,
+          "sent": 1833,
+          "mem": 207
+        },
+        {
+          "id": "gateway-3",
+          "conns": 3334,
+          "aps": 0,
+          "sent": 0,
+          "mem": 204
+        }
+      ],
+      "lag": [
+        0
+      ]
+    },
+    {
+      "at": 1790456166646,
+      "gateways": [
+        {
+          "id": "gateway-1",
+          "conns": 3333,
+          "aps": 0,
+          "sent": 0,
+          "mem": 217
+        },
+        {
+          "id": "gateway-2",
+          "conns": 3333,
+          "aps": 0,
+          "sent": 0,
+          "mem": 207
+        },
+        {
+          "id": "gateway-3",
+          "conns": 3334,
+          "aps": 0,
+          "sent": 0,
+          "mem": 204
+        }
+      ],
+      "lag": [
+        0
+      ]
+    },
+    {
+      "at": 1790456167740,
+      "gateways": [
+        {
+          "id": "gateway-1",
+          "conns": 3333,
+          "aps": 0,
+          "sent": 0,
+          "mem": 217
+        },
+        {
+          "id": "gateway-2",
+          "conns": 3333,
+          "aps": 0,
+          "sent": 0,
+          "mem": 207
+        },
+        {
+          "id": "gateway-3",
+          "conns": 3334,
+          "aps": 0,
+          "sent": 0,
+          "mem": 204
+        }
+      ],
+      "lag": [
+        0
+      ]
+    },
+    {
+      "at": 1790456168743,
+      "gateways": [
+        {
+          "id": "gateway-1",
+          "conns": 3333,
+          "aps": 0,
+          "sent": 3333,
+          "mem": 217
+        },
+        {
+          "id": "gateway-2",
+          "conns": 3333,
+          "aps": 0,
+          "sent": 3333,
+          "mem": 207
+        },
+        {
+          "id": "gateway-3",
+          "conns": 3334,
+          "aps": 0,
+          "sent": 3334,
+          "mem": 204
+        }
+      ],
+      "lag": [
+        0
+      ]
+    },
+    {
+      "at": 1790456169743,
+      "gateways": [
+        {
+          "id": "gateway-1",
+          "conns": 3333,
+          "aps": 0,
+          "sent": 0,
+          "mem": 217
+        },
+        {
+          "id": "gateway-2",
+          "conns": 3333,
+          "aps": 0,
+          "sent": 0,
+          "mem": 207
+        },
+        {
+          "id": "gateway-3",
+          "conns": 3334,
+          "aps": 0,
+          "sent": 0,
+          "mem": 204
+        }
+      ],
+      "lag": [
+        0
+      ]
+    },
+    {
+      "at": 1790456170743,
+      "gateways": [
+        {
+          "id": "gateway-1",
+          "conns": 3333,
+          "aps": 0,
+          "sent": 0,
+          "mem": 217
+        },
+        {
+          "id": "gateway-2",
+          "conns": 3333,
+          "aps": 0,
+          "sent": 0,
+          "mem": 207
+        },
+        {
+          "id": "gateway-3",
+          "conns": 3334,
+          "aps": 0,
+          "sent": 0,
+          "mem": 204
+        }
+      ],
+      "lag": [
+        0
+      ]
+    },
+    {
+      "at": 1790456172407,
+      "gateways": [
+        {
+          "id": "gateway-1",
+          "conns": 3333,
+          "aps": 1,
+          "sent": 10000,
+          "mem": 217
+        },
+        {
+          "id": "gateway-2",
+          "conns": 3333,
+          "aps": 1,
+          "sent": 6667,
+          "mem": 207
+        },
+        {
+          "id": "gateway-3",
+          "conns": 3334,
+          "aps": 3,
+          "sent": 10005,
+          "mem": 204
+        }
+      ],
+      "lag": [
+        0
+      ]
+    },
+    {
+      "at": 1790456173370,
+      "gateways": [
+        {
+          "id": "gateway-1",
+          "conns": 3333,
+          "aps": 235,
+          "sent": 6901,
+          "mem": 217
+        },
+        {
+          "id": "gateway-2",
+          "conns": 3333,
+          "aps": 156,
+          "sent": 6822,
+          "mem": 207
+        },
+        {
+          "id": "gateway-3",
+          "conns": 3334,
+          "aps": 244,
+          "sent": 6912,
+          "mem": 204
+        }
+      ],
+      "lag": [
+        0
+      ]
+    },
+    {
+      "at": 1790456174371,
+      "gateways": [
+        {
+          "id": "gateway-1",
+          "conns": 3333,
+          "aps": 200,
+          "sent": 6866,
+          "mem": 217
+        },
+        {
+          "id": "gateway-2",
+          "conns": 3333,
+          "aps": 132,
+          "sent": 6798,
+          "mem": 207
+        },
+        {
+          "id": "gateway-3",
+          "conns": 3334,
+          "aps": 187,
+          "sent": 6855,
+          "mem": 204
+        }
+      ],
+      "lag": [
+        0
+      ]
+    },
+    {
+      "at": 1790456175596,
+      "gateways": [
+        {
+          "id": "gateway-1",
+          "conns": 3333,
+          "aps": 161,
+          "sent": 6827,
+          "mem": 218
+        },
+        {
+          "id": "gateway-2",
+          "conns": 3333,
+          "aps": 184,
+          "sent": 6850,
+          "mem": 206
+        },
+        {
+          "id": "gateway-3",
+          "conns": 3334,
+          "aps": 171,
+          "sent": 6839,
+          "mem": 204
+        }
+      ],
+      "lag": [
+        0
+      ]
+    },
+    {
+      "at": 1790456176672,
+      "gateways": [
+        {
+          "id": "gateway-1",
+          "conns": 3333,
+          "aps": 180,
+          "sent": 6846,
+          "mem": 218
+        },
+        {
+          "id": "gateway-2",
+          "conns": 3333,
+          "aps": 197,
+          "sent": 6863,
+          "mem": 206
+        },
+        {
+          "id": "gateway-3",
+          "conns": 3334,
+          "aps": 156,
+          "sent": 6824,
+          "mem": 204
+        }
+      ],
+      "lag": [
+        0
+      ]
+    },
+    {
+      "at": 1790456177708,
+      "gateways": [
+        {
+          "id": "gateway-1",
+          "conns": 3333,
+          "aps": 241,
+          "sent": 6907,
+          "mem": 218
+        },
+        {
+          "id": "gateway-2",
+          "conns": 3333,
+          "aps": 241,
+          "sent": 6907,
+          "mem": 206
+        },
+        {
+          "id": "gateway-3",
+          "conns": 3334,
+          "aps": 228,
+          "sent": 6896,
+          "mem": 204
+        }
+      ],
+      "lag": [
+        0
+      ]
+    },
+    {
+      "at": 1790456178710,
+      "gateways": [
+        {
+          "id": "gateway-1",
+          "conns": 3333,
+          "aps": 237,
+          "sent": 6903,
+          "mem": 218
+        },
+        {
+          "id": "gateway-2",
+          "conns": 3333,
+          "aps": 236,
+          "sent": 6902,
+          "mem": 206
+        },
+        {
+          "id": "gateway-3",
+          "conns": 3334,
+          "aps": 265,
+          "sent": 6933,
+          "mem": 204
+        }
+      ],
+      "lag": [
+        0
+      ]
+    },
+    {
+      "at": 1790456179836,
+      "gateways": [
+        {
+          "id": "gateway-1",
+          "conns": 3333,
+          "aps": 311,
+          "sent": 6977,
+          "mem": 217
+        },
+        {
+          "id": "gateway-2",
+          "conns": 3333,
+          "aps": 302,
+          "sent": 6968,
+          "mem": 206
+        },
+        {
+          "id": "gateway-3",
+          "conns": 3334,
+          "aps": 314,
+          "sent": 6982,
+          "mem": 205
+        }
+      ],
+      "lag": [
+        0
+      ]
+    },
+    {
+      "at": 1790456180969,
+      "gateways": [
+        {
+          "id": "gateway-1",
+          "conns": 3333,
+          "aps": 376,
+          "sent": 7042,
+          "mem": 217
+        },
+        {
+          "id": "gateway-2",
+          "conns": 3333,
+          "aps": 196,
+          "sent": 6862,
+          "mem": 206
+        },
+        {
+          "id": "gateway-3",
+          "conns": 3334,
+          "aps": 341,
+          "sent": 7009,
+          "mem": 207
+        }
+      ],
+      "lag": [
+        0
+      ]
+    },
+    {
+      "at": 1790456182932,
+      "gateways": [
+        {
+          "id": "gateway-1",
+          "conns": 3333,
+          "aps": 318,
+          "sent": 11033,
+          "mem": 218
+        },
+        {
+          "id": "gateway-2",
+          "conns": 3333,
+          "aps": 0,
+          "sent": 10008,
+          "mem": 220
+        },
+        {
+          "id": "gateway-3",
+          "conns": 3334,
+          "aps": 513,
+          "sent": 11705,
+          "mem": 216
+        }
+      ],
+      "lag": [
+        0
+      ]
+    },
+    {
+      "at": 1790456183932,
+      "gateways": [
+        {
+          "id": "gateway-1",
+          "conns": 3333,
+          "aps": 0,
+          "sent": 2833,
+          "mem": 218
+        },
+        {
+          "id": "gateway-2",
+          "conns": 3333,
+          "aps": 0,
+          "sent": 0,
+          "mem": 220
+        },
+        {
+          "id": "gateway-3",
+          "conns": 3334,
+          "aps": 0,
+          "sent": 2334,
+          "mem": 227
+        }
+      ],
+      "lag": [
+        0
+      ]
+    },
+    {
+      "at": 1790456184933,
+      "gateways": [
+        {
+          "id": "gateway-1",
+          "conns": 3333,
+          "aps": 0,
+          "sent": 0,
+          "mem": 218
+        },
+        {
+          "id": "gateway-2",
+          "conns": 3333,
+          "aps": 0,
+          "sent": 0,
+          "mem": 220
+        },
+        {
+          "id": "gateway-3",
+          "conns": 3334,
+          "aps": 0,
+          "sent": 0,
+          "mem": 227
+        }
+      ],
+      "lag": [
+        0
+      ]
+    },
+    {
+      "at": 1790456185938,
+      "gateways": [
+        {
+          "id": "gateway-1",
+          "conns": 3333,
+          "aps": 0,
+          "sent": 0,
+          "mem": 218
+        },
+        {
+          "id": "gateway-2",
+          "conns": 3333,
+          "aps": 0,
+          "sent": 0,
+          "mem": 220
+        },
+        {
+          "id": "gateway-3",
+          "conns": 3334,
+          "aps": 0,
+          "sent": 0,
+          "mem": 227
+        }
+      ],
+      "lag": [
+        0
+      ]
+    },
+    {
+      "at": 1790456186937,
+      "gateways": [
+        {
+          "id": "gateway-1",
+          "conns": 3333,
+          "aps": 0,
+          "sent": 3333,
+          "mem": 219
+        },
+        {
+          "id": "gateway-2",
+          "conns": 3333,
+          "aps": 0,
+          "sent": 3333,
+          "mem": 220
+        },
+        {
+          "id": "gateway-3",
+          "conns": 3334,
+          "aps": 0,
+          "sent": 3334,
+          "mem": 227
+        }
+      ],
+      "lag": [
+        0
+      ]
+    },
+    {
+      "at": 1790456187936,
+      "gateways": [
+        {
+          "id": "gateway-1",
+          "conns": 3333,
+          "aps": 0,
+          "sent": 0,
+          "mem": 219
+        },
+        {
+          "id": "gateway-2",
+          "conns": 3333,
+          "aps": 0,
+          "sent": 0,
+          "mem": 220
+        },
+        {
+          "id": "gateway-3",
+          "conns": 3334,
+          "aps": 0,
+          "sent": 0,
+          "mem": 227
+        }
+      ],
+      "lag": [
+        0
+      ]
+    },
+    {
+      "at": 1790456189335,
+      "gateways": [
+        {
+          "id": "gateway-1",
+          "conns": 3333,
+          "aps": 0,
+          "sent": 0,
+          "mem": 219
+        },
+        {
+          "id": "gateway-2",
+          "conns": 3333,
+          "aps": 0,
+          "sent": 0,
+          "mem": 220
+        },
+        {
+          "id": "gateway-3",
+          "conns": 3334,
+          "aps": 0,
+          "sent": 0,
+          "mem": 231
+        }
+      ],
+      "lag": [
+        0
+      ]
+    },
+    {
+      "at": 1790456190594,
+      "gateways": [
+        {
+          "id": "gateway-1",
+          "conns": 3333,
+          "aps": 0,
+          "sent": 6666,
+          "mem": 219
+        },
+        {
+          "id": "gateway-2",
+          "conns": 3333,
+          "aps": 0,
+          "sent": 0,
+          "mem": 220
+        },
+        {
+          "id": "gateway-3",
+          "conns": 3334,
+          "aps": 1,
+          "sent": 6669,
+          "mem": 231
+        }
+      ],
+      "lag": [
+        0
+      ]
+    },
+    {
+      "at": 1790456191579,
+      "gateways": [
+        {
+          "id": "gateway-1",
+          "conns": 3333,
+          "aps": 144,
+          "sent": 6810,
+          "mem": 220
+        },
+        {
+          "id": "gateway-2",
+          "conns": 3333,
+          "aps": 60,
+          "sent": 10059,
+          "mem": 220
+        },
+        {
+          "id": "gateway-3",
+          "conns": 3334,
+          "aps": 148,
+          "sent": 6816,
+          "mem": 233
+        }
+      ],
+      "lag": [
+        0
+      ]
+    },
+    {
+      "at": 1790456192586,
+      "gateways": [
+        {
+          "id": "gateway-1",
+          "conns": 3333,
+          "aps": 197,
+          "sent": 6863,
+          "mem": 221
+        },
+        {
+          "id": "gateway-2",
+          "conns": 3333,
+          "aps": 151,
+          "sent": 6817,
+          "mem": 220
+        },
+        {
+          "id": "gateway-3",
+          "conns": 3334,
+          "aps": 159,
+          "sent": 6827,
+          "mem": 234
+        }
+      ],
+      "lag": [
+        0
+      ]
+    },
+    {
+      "at": 1790456193583,
+      "gateways": [
+        {
+          "id": "gateway-1",
+          "conns": 3333,
+          "aps": 159,
+          "sent": 6825,
+          "mem": 223
+        },
+        {
+          "id": "gateway-2",
+          "conns": 3333,
+          "aps": 187,
+          "sent": 6853,
+          "mem": 220
+        },
+        {
+          "id": "gateway-3",
+          "conns": 3334,
+          "aps": 179,
+          "sent": 6847,
+          "mem": 235
+        }
+      ],
+      "lag": [
+        0
+      ]
+    },
+    {
+      "at": 1790456194580,
+      "gateways": [
+        {
+          "id": "gateway-1",
+          "conns": 3333,
+          "aps": 187,
+          "sent": 6853,
+          "mem": 223
+        },
+        {
+          "id": "gateway-2",
+          "conns": 3333,
+          "aps": 204,
+          "sent": 6870,
+          "mem": 221
+        },
+        {
+          "id": "gateway-3",
+          "conns": 3334,
+          "aps": 176,
+          "sent": 6844,
+          "mem": 236
+        }
+      ],
+      "lag": [
+        0
+      ]
+    },
+    {
+      "at": 1790456195582,
+      "gateways": [
+        {
+          "id": "gateway-1",
+          "conns": 3333,
+          "aps": 229,
+          "sent": 6895,
+          "mem": 224
+        },
+        {
+          "id": "gateway-2",
+          "conns": 3333,
+          "aps": 175,
+          "sent": 6841,
+          "mem": 220
+        },
+        {
+          "id": "gateway-3",
+          "conns": 3334,
+          "aps": 203,
+          "sent": 6871,
+          "mem": 238
+        }
+      ],
+      "lag": [
+        0
+      ]
+    },
+    {
+      "at": 1790456196579,
+      "gateways": [
+        {
+          "id": "gateway-1",
+          "conns": 3333,
+          "aps": 226,
+          "sent": 6892,
+          "mem": 226
+        },
+        {
+          "id": "gateway-2",
+          "conns": 3333,
+          "aps": 237,
+          "sent": 6903,
+          "mem": 221
+        },
+        {
+          "id": "gateway-3",
+          "conns": 3334,
+          "aps": 247,
+          "sent": 6915,
+          "mem": 239
+        }
+      ],
+      "lag": [
+        0
+      ]
+    },
+    {
+      "at": 1790456197579,
+      "gateways": [
+        {
+          "id": "gateway-1",
+          "conns": 3333,
+          "aps": 259,
+          "sent": 6925,
+          "mem": 227
+        },
+        {
+          "id": "gateway-2",
+          "conns": 3333,
+          "aps": 237,
+          "sent": 6903,
+          "mem": 220
+        },
+        {
+          "id": "gateway-3",
+          "conns": 3334,
+          "aps": 251,
+          "sent": 6919,
+          "mem": 240
+        }
+      ],
+      "lag": [
+        0
+      ]
+    },
+    {
+      "at": 1790456198588,
+      "gateways": [
+        {
+          "id": "gateway-1",
+          "conns": 3333,
+          "aps": 343,
+          "sent": 7009,
+          "mem": 230
+        },
+        {
+          "id": "gateway-2",
+          "conns": 3333,
+          "aps": 256,
+          "sent": 6922,
+          "mem": 221
+        },
+        {
+          "id": "gateway-3",
+          "conns": 3334,
+          "aps": 313,
+          "sent": 6981,
+          "mem": 242
+        }
+      ],
+      "lag": [
+        0
+      ]
+    },
+    {
+      "at": 1790456200096,
+      "gateways": [
+        {
+          "id": "gateway-1",
+          "conns": 3333,
+          "aps": 449,
+          "sent": 7115,
+          "mem": 233
+        },
+        {
+          "id": "gateway-2",
+          "conns": 3333,
+          "aps": 358,
+          "sent": 7024,
+          "mem": 220
+        },
+        {
+          "id": "gateway-3",
+          "conns": 3334,
+          "aps": 465,
+          "sent": 7133,
+          "mem": 246
+        }
+      ],
+      "lag": [
+        27
+      ]
+    },
+    {
+      "at": 1790456201713,
+      "gateways": [
+        {
+          "id": "gateway-1",
+          "conns": 3333,
+          "aps": 490,
+          "sent": 7156,
+          "mem": 236
+        },
+        {
+          "id": "gateway-2",
+          "conns": 3333,
+          "aps": 590,
+          "sent": 7256,
+          "mem": 220
+        },
+        {
+          "id": "gateway-3",
+          "conns": 3334,
+          "aps": 524,
+          "sent": 7192,
+          "mem": 249
+        }
+      ],
+      "lag": [
+        0
+      ]
+    },
+    {
+      "at": 1790456201873,
+      "gateways": [
+        {
+          "id": "gateway-1",
+          "conns": 3333,
+          "aps": 64,
+          "sent": 8670,
+          "mem": 242
+        },
+        {
+          "id": "gateway-2",
+          "conns": 3333,
+          "aps": 186,
+          "sent": 10750,
+          "mem": 220
+        },
+        {
+          "id": "gateway-3",
+          "conns": 3334,
+          "aps": 37,
+          "sent": 10220,
+          "mem": 265
+        }
+      ],
+      "lag": [
+        0
+      ]
+    },
+    {
+      "at": 1790456202872,
+      "gateways": [
+        {
+          "id": "gateway-1",
+          "conns": 3333,
+          "aps": 0,
+          "sent": 1833,
+          "mem": 250
+        },
+        {
+          "id": "gateway-2",
+          "conns": 3333,
+          "aps": 0,
+          "sent": 3333,
+          "mem": 224
+        },
+        {
+          "id": "gateway-3",
+          "conns": 3334,
+          "aps": 0,
+          "sent": 334,
+          "mem": 265
+        }
+      ],
+      "lag": [
+        0
+      ]
+    },
+    {
+      "at": 1790456203869,
+      "gateways": [
+        {
+          "id": "gateway-1",
+          "conns": 3333,
+          "aps": 0,
+          "sent": 0,
+          "mem": 250
+        },
+        {
+          "id": "gateway-2",
+          "conns": 3333,
+          "aps": 0,
+          "sent": 0,
+          "mem": 224
+        },
+        {
+          "id": "gateway-3",
+          "conns": 3334,
+          "aps": 0,
+          "sent": 0,
+          "mem": 265
+        }
+      ],
+      "lag": [
+        0
+      ]
+    },
+    {
+      "at": 1790456205133,
+      "gateways": [
+        {
+          "id": "gateway-1",
+          "conns": 3333,
+          "aps": 0,
+          "sent": 0,
+          "mem": 250
+        },
+        {
+          "id": "gateway-2",
+          "conns": 3333,
+          "aps": 0,
+          "sent": 0,
+          "mem": 224
+        },
+        {
+          "id": "gateway-3",
+          "conns": 3334,
+          "aps": 0,
+          "sent": 0,
+          "mem": 265
+        }
+      ],
+      "lag": [
+        0
+      ]
+    },
+    {
+      "at": 1790456205881,
+      "gateways": [
+        {
+          "id": "gateway-1",
+          "conns": 3333,
+          "aps": 0,
+          "sent": 3333,
+          "mem": 251
+        },
+        {
+          "id": "gateway-2",
+          "conns": 3333,
+          "aps": 0,
+          "sent": 3333,
+          "mem": 224
+        },
+        {
+          "id": "gateway-3",
+          "conns": 3334,
+          "aps": 0,
+          "sent": 3334,
+          "mem": 268
+        }
+      ],
+      "lag": [
+        0
+      ]
+    },
+    {
+      "at": 1790456206880,
+      "gateways": [
+        {
+          "id": "gateway-1",
+          "conns": 3333,
+          "aps": 0,
+          "sent": 0,
+          "mem": 251
+        },
+        {
+          "id": "gateway-2",
+          "conns": 3333,
+          "aps": 0,
+          "sent": 0,
+          "mem": 224
+        },
+        {
+          "id": "gateway-3",
+          "conns": 3334,
+          "aps": 0,
+          "sent": 0,
+          "mem": 269
+        }
+      ],
+      "lag": [
+        0
+      ]
+    },
+    {
+      "at": 1790456207885,
+      "gateways": [
+        {
+          "id": "gateway-1",
+          "conns": 3333,
+          "aps": 0,
+          "sent": 0,
+          "mem": 251
+        },
+        {
+          "id": "gateway-2",
+          "conns": 3333,
+          "aps": 0,
+          "sent": 0,
+          "mem": 224
+        },
+        {
+          "id": "gateway-3",
+          "conns": 3334,
+          "aps": 0,
+          "sent": 0,
+          "mem": 269
+        }
+      ],
+      "lag": [
+        0
+      ]
+    },
+    {
+      "at": 1790456209236,
+      "gateways": [
+        {
+          "id": "gateway-1",
+          "conns": 3333,
+          "aps": 0,
+          "sent": 0,
+          "mem": 251
+        },
+        {
+          "id": "gateway-2",
+          "conns": 3333,
+          "aps": 0,
+          "sent": 0,
+          "mem": 224
+        },
+        {
+          "id": "gateway-3",
+          "conns": 3334,
+          "aps": 0,
+          "sent": 0,
+          "mem": 269
+        }
+      ],
+      "lag": [
+        0
+      ]
+    },
+    {
+      "at": 1790456210031,
+      "gateways": [
+        {
+          "id": "gateway-1",
+          "conns": 3333,
+          "aps": 25,
+          "sent": 6691,
+          "mem": 251
+        },
+        {
+          "id": "gateway-2",
+          "conns": 3333,
+          "aps": 0,
+          "sent": 3333,
+          "mem": 227
+        },
+        {
+          "id": "gateway-3",
+          "conns": 3334,
+          "aps": 30,
+          "sent": 6698,
+          "mem": 269
+        }
+      ],
+      "lag": [
+        0
+      ]
+    },
+    {
+      "at": 1790456211058,
+      "gateways": [
+        {
+          "id": "gateway-1",
+          "conns": 3333,
+          "aps": 143,
+          "sent": 6809,
+          "mem": 251
+        },
+        {
+          "id": "gateway-2",
+          "conns": 3333,
+          "aps": 171,
+          "sent": 6837,
+          "mem": 228
+        },
+        {
+          "id": "gateway-3",
+          "conns": 3334,
+          "aps": 140,
+          "sent": 6808,
+          "mem": 269
+        }
+      ],
+      "lag": [
+        0
+      ]
+    },
+    {
+      "at": 1790456212054,
+      "gateways": [
+        {
+          "id": "gateway-1",
+          "conns": 3333,
+          "aps": 169,
+          "sent": 6835,
+          "mem": 251
+        },
+        {
+          "id": "gateway-2",
+          "conns": 3333,
+          "aps": 185,
+          "sent": 6851,
+          "mem": 229
+        },
+        {
+          "id": "gateway-3",
+          "conns": 3334,
+          "aps": 177,
+          "sent": 6845,
+          "mem": 270
+        }
+      ],
+      "lag": [
+        0
+      ]
+    },
+    {
+      "at": 1790456213054,
+      "gateways": [
+        {
+          "id": "gateway-1",
+          "conns": 3333,
+          "aps": 183,
+          "sent": 6849,
+          "mem": 251
+        },
+        {
+          "id": "gateway-2",
+          "conns": 3333,
+          "aps": 206,
+          "sent": 6872,
+          "mem": 230
+        },
+        {
+          "id": "gateway-3",
+          "conns": 3334,
+          "aps": 163,
+          "sent": 6831,
+          "mem": 272
+        }
+      ],
+      "lag": [
+        0
+      ]
+    },
+    {
+      "at": 1790456215130,
+      "gateways": [
+        {
+          "id": "gateway-1",
+          "conns": 3333,
+          "aps": 93,
+          "sent": 6759,
+          "mem": 251
+        },
+        {
+          "id": "gateway-2",
+          "conns": 3333,
+          "aps": 0,
+          "sent": 6666,
+          "mem": 232
+        },
+        {
+          "id": "gateway-3",
+          "conns": 3334,
+          "aps": 110,
+          "sent": 6778,
+          "mem": 273
+        }
+      ],
+      "lag": [
+        0
+      ]
+    },
+    {
+      "at": 1790456216084,
+      "gateways": [
+        {
+          "id": "gateway-1",
+          "conns": 3333,
+          "aps": 355,
+          "sent": 7021,
+          "mem": 251
+        },
+        {
+          "id": "gateway-2",
+          "conns": 3333,
+          "aps": 541,
+          "sent": 7207,
+          "mem": 234
+        },
+        {
+          "id": "gateway-3",
+          "conns": 3334,
+          "aps": 362,
+          "sent": 7030,
+          "mem": 276
+        }
+      ],
+      "lag": [
+        0
+      ]
+    },
+    {
+      "at": 1790456217175,
+      "gateways": [
+        {
+          "id": "gateway-1",
+          "conns": 3333,
+          "aps": 336,
+          "sent": 7002,
+          "mem": 252
+        },
+        {
+          "id": "gateway-2",
+          "conns": 3333,
+          "aps": 277,
+          "sent": 6943,
+          "mem": 237
+        },
+        {
+          "id": "gateway-3",
+          "conns": 3334,
+          "aps": 325,
+          "sent": 6993,
+          "mem": 278
+        }
+      ],
+      "lag": [
+        0
+      ]
+    },
+    {
+      "at": 1790456218621,
+      "gateways": [
+        {
+          "id": "gateway-1",
+          "conns": 3333,
+          "aps": 349,
+          "sent": 7015,
+          "mem": 252
+        },
+        {
+          "id": "gateway-2",
+          "conns": 3333,
+          "aps": 443,
+          "sent": 7109,
+          "mem": 240
+        },
+        {
+          "id": "gateway-3",
+          "conns": 3334,
+          "aps": 337,
+          "sent": 7005,
+          "mem": 280
+        }
+      ],
+      "lag": [
+        0
+      ]
+    },
+    {
+      "at": 1790456220305,
+      "gateways": [
+        {
+          "id": "gateway-1",
+          "conns": 3333,
+          "aps": 637,
+          "sent": 7516,
+          "mem": 251
+        },
+        {
+          "id": "gateway-2",
+          "conns": 3333,
+          "aps": 30,
+          "sent": 10386,
+          "mem": 260
+        },
+        {
+          "id": "gateway-3",
+          "conns": 3334,
+          "aps": 516,
+          "sent": 10917,
+          "mem": 285
+        }
+      ],
+      "lag": [
+        0
+      ]
+    },
+    {
+      "at": 1790456221305,
+      "gateways": [
+        {
+          "id": "gateway-1",
+          "conns": 3333,
+          "aps": 0,
+          "sent": 6666,
+          "mem": 251
+        },
+        {
+          "id": "gateway-2",
+          "conns": 3333,
+          "aps": 0,
+          "sent": 0,
+          "mem": 260
+        },
+        {
+          "id": "gateway-3",
+          "conns": 3334,
+          "aps": 0,
+          "sent": 3334,
+          "mem": 285
+        }
+      ],
+      "lag": [
+        0
+      ]
+    },
+    {
+      "at": 1790456222308,
+      "gateways": [
+        {
+          "id": "gateway-1",
+          "conns": 3333,
+          "aps": 0,
+          "sent": 0,
+          "mem": 251
+        },
+        {
+          "id": "gateway-2",
+          "conns": 3333,
+          "aps": 0,
+          "sent": 0,
+          "mem": 260
+        },
+        {
+          "id": "gateway-3",
+          "conns": 3334,
+          "aps": 0,
+          "sent": 0,
+          "mem": 285
+        }
+      ],
+      "lag": [
+        0
+      ]
+    },
+    {
+      "at": 1790456223314,
+      "gateways": [
+        {
+          "id": "gateway-1",
+          "conns": 3333,
+          "aps": 0,
+          "sent": 0,
+          "mem": 251
+        },
+        {
+          "id": "gateway-2",
+          "conns": 3333,
+          "aps": 0,
+          "sent": 0,
+          "mem": 260
+        },
+        {
+          "id": "gateway-3",
+          "conns": 3334,
+          "aps": 0,
+          "sent": 0,
+          "mem": 285
+        }
+      ],
+      "lag": [
+        0
+      ]
+    },
+    {
+      "at": 1790456224308,
+      "gateways": [
+        {
+          "id": "gateway-1",
+          "conns": 3333,
+          "aps": 0,
+          "sent": 0,
+          "mem": 251
+        },
+        {
+          "id": "gateway-2",
+          "conns": 3333,
+          "aps": 0,
+          "sent": 3333,
+          "mem": 264
+        },
+        {
+          "id": "gateway-3",
+          "conns": 3334,
+          "aps": 0,
+          "sent": 3334,
+          "mem": 285
+        }
+      ],
+      "lag": [
+        0
+      ]
+    },
+    {
+      "at": 1790456225307,
+      "gateways": [
+        {
+          "id": "gateway-1",
+          "conns": 3333,
+          "aps": 0,
+          "sent": 3333,
+          "mem": 252
+        },
+        {
+          "id": "gateway-2",
+          "conns": 3333,
+          "aps": 0,
+          "sent": 0,
+          "mem": 264
+        },
+        {
+          "id": "gateway-3",
+          "conns": 3334,
+          "aps": 0,
+          "sent": 0,
+          "mem": 285
+        }
+      ],
+      "lag": [
+        0
+      ]
+    },
+    {
+      "at": 1790456226309,
+      "gateways": [
+        {
+          "id": "gateway-1",
+          "conns": 3333,
+          "aps": 0,
+          "sent": 0,
+          "mem": 252
+        },
+        {
+          "id": "gateway-2",
+          "conns": 3333,
+          "aps": 0,
+          "sent": 0,
+          "mem": 264
+        },
+        {
+          "id": "gateway-3",
+          "conns": 3334,
+          "aps": 0,
+          "sent": 0,
+          "mem": 285
+        }
+      ],
+      "lag": [
+        0
+      ]
+    },
+    {
+      "at": 1790456227312,
+      "gateways": [
+        {
+          "id": "gateway-1",
+          "conns": 3333,
+          "aps": 0,
+          "sent": 0,
+          "mem": 252
+        },
+        {
+          "id": "gateway-2",
+          "conns": 3333,
+          "aps": 0,
+          "sent": 0,
+          "mem": 264
+        },
+        {
+          "id": "gateway-3",
+          "conns": 3334,
+          "aps": 0,
+          "sent": 0,
+          "mem": 285
+        }
+      ],
+      "lag": [
+        0
+      ]
+    },
+    {
+      "at": 1790456228490,
+      "gateways": [
+        {
+          "id": "gateway-1",
+          "conns": 3333,
+          "aps": 0,
+          "sent": 0,
+          "mem": 252
+        },
+        {
+          "id": "gateway-2",
+          "conns": 3333,
+          "aps": 40,
+          "sent": 6706,
+          "mem": 264
+        },
+        {
+          "id": "gateway-3",
+          "conns": 3334,
+          "aps": 0,
+          "sent": 3334,
+          "mem": 285
+        }
+      ],
+      "lag": [
+        0
+      ]
+    },
+    {
+      "at": 1790456229544,
+      "gateways": [
+        {
+          "id": "gateway-1",
+          "conns": 3333,
+          "aps": 165,
+          "sent": 6831,
+          "mem": 251
+        },
+        {
+          "id": "gateway-2",
+          "conns": 3333,
+          "aps": 141,
+          "sent": 6807,
+          "mem": 264
+        },
+        {
+          "id": "gateway-3",
+          "conns": 3334,
+          "aps": 117,
+          "sent": 6785,
+          "mem": 285
+        }
+      ],
+      "lag": [
+        0
+      ]
+    },
+    {
+      "at": 1790456230535,
+      "gateways": [
+        {
+          "id": "gateway-1",
+          "conns": 3333,
+          "aps": 149,
+          "sent": 6815,
+          "mem": 251
+        },
+        {
+          "id": "gateway-2",
+          "conns": 3333,
+          "aps": 155,
+          "sent": 6821,
+          "mem": 265
+        },
+        {
+          "id": "gateway-3",
+          "conns": 3334,
+          "aps": 170,
+          "sent": 6838,
+          "mem": 285
+        }
+      ],
+      "lag": [
+        0
+      ]
+    },
+    {
+      "at": 1790456231534,
+      "gateways": [
+        {
+          "id": "gateway-1",
+          "conns": 3333,
+          "aps": 190,
+          "sent": 6856,
+          "mem": 251
+        },
+        {
+          "id": "gateway-2",
+          "conns": 3333,
+          "aps": 179,
+          "sent": 6845,
+          "mem": 267
+        },
+        {
+          "id": "gateway-3",
+          "conns": 3334,
+          "aps": 178,
+          "sent": 6846,
+          "mem": 285
+        }
+      ],
+      "lag": [
+        0
+      ]
+    },
+    {
+      "at": 1790456232553,
+      "gateways": [
+        {
+          "id": "gateway-1",
+          "conns": 3333,
+          "aps": 196,
+          "sent": 6862,
+          "mem": 251
+        },
+        {
+          "id": "gateway-2",
+          "conns": 3333,
+          "aps": 192,
+          "sent": 6858,
+          "mem": 267
+        },
+        {
+          "id": "gateway-3",
+          "conns": 3334,
+          "aps": 172,
+          "sent": 6840,
+          "mem": 285
+        }
+      ],
+      "lag": [
+        0
+      ]
+    },
+    {
+      "at": 1790456233578,
+      "gateways": [
+        {
+          "id": "gateway-1",
+          "conns": 3333,
+          "aps": 215,
+          "sent": 6881,
+          "mem": 252
+        },
+        {
+          "id": "gateway-2",
+          "conns": 3333,
+          "aps": 205,
+          "sent": 6871,
+          "mem": 269
+        },
+        {
+          "id": "gateway-3",
+          "conns": 3334,
+          "aps": 186,
+          "sent": 6854,
+          "mem": 285
+        }
+      ],
+      "lag": [
+        0
+      ]
+    },
+    {
+      "at": 1790456234567,
+      "gateways": [
+        {
+          "id": "gateway-1",
+          "conns": 3333,
+          "aps": 256,
+          "sent": 6922,
+          "mem": 251
+        },
+        {
+          "id": "gateway-2",
+          "conns": 3333,
+          "aps": 260,
+          "sent": 6926,
+          "mem": 270
+        },
+        {
+          "id": "gateway-3",
+          "conns": 3334,
+          "aps": 285,
+          "sent": 6953,
+          "mem": 285
+        }
+      ],
+      "lag": [
+        0
+      ]
+    },
+    {
+      "at": 1790456235594,
+      "gateways": [
+        {
+          "id": "gateway-1",
+          "conns": 3333,
+          "aps": 330,
+          "sent": 6996,
+          "mem": 252
+        },
+        {
+          "id": "gateway-2",
+          "conns": 3333,
+          "aps": 300,
+          "sent": 6966,
+          "mem": 272
+        },
+        {
+          "id": "gateway-3",
+          "conns": 3334,
+          "aps": 319,
+          "sent": 6987,
+          "mem": 285
+        }
+      ],
+      "lag": [
+        0
+      ]
+    },
+    {
+      "at": 1790456236618,
+      "gateways": [
+        {
+          "id": "gateway-1",
+          "conns": 3333,
+          "aps": 418,
+          "sent": 7084,
+          "mem": 252
+        },
+        {
+          "id": "gateway-2",
+          "conns": 3333,
+          "aps": 326,
+          "sent": 6992,
+          "mem": 274
+        },
+        {
+          "id": "gateway-3",
+          "conns": 3334,
+          "aps": 423,
+          "sent": 7091,
+          "mem": 285
+        }
+      ],
+      "lag": [
+        1
+      ]
+    },
+    {
+      "at": 1790456239817,
+      "gateways": [
+        {
+          "id": "gateway-1",
+          "conns": 3333,
+          "aps": 0,
+          "sent": 2333,
+          "mem": 264
+        },
+        {
+          "id": "gateway-2",
+          "conns": 3333,
+          "aps": 0,
+          "sent": 6666,
+          "mem": 289
+        },
+        {
+          "id": "gateway-3",
+          "conns": 3334,
+          "aps": 0,
+          "sent": 1834,
+          "mem": 286
+        }
+      ],
+      "lag": [
+        0
+      ]
+    },
+    {
+      "at": 1790456240808,
+      "gateways": [
+        {
+          "id": "gateway-1",
+          "conns": 3333,
+          "aps": 0,
+          "sent": 0,
+          "mem": 264
+        },
+        {
+          "id": "gateway-2",
+          "conns": 3333,
+          "aps": 0,
+          "sent": 0,
+          "mem": 289
+        },
+        {
+          "id": "gateway-3",
+          "conns": 3334,
+          "aps": 0,
+          "sent": 0,
+          "mem": 286
+        }
+      ],
+      "lag": [
+        0
+      ]
+    },
+    {
+      "at": 1790456241807,
+      "gateways": [
+        {
+          "id": "gateway-1",
+          "conns": 3333,
+          "aps": 0,
+          "sent": 0,
+          "mem": 264
+        },
+        {
+          "id": "gateway-2",
+          "conns": 3333,
+          "aps": 0,
+          "sent": 0,
+          "mem": 289
+        },
+        {
+          "id": "gateway-3",
+          "conns": 3334,
+          "aps": 0,
+          "sent": 0,
+          "mem": 286
+        }
+      ],
+      "lag": [
+        0
+      ]
+    },
+    {
+      "at": 1790456242809,
+      "gateways": [
+        {
+          "id": "gateway-1",
+          "conns": 3333,
+          "aps": 0,
+          "sent": 3333,
+          "mem": 267
+        },
+        {
+          "id": "gateway-2",
+          "conns": 3333,
+          "aps": 0,
+          "sent": 0,
+          "mem": 289
+        },
+        {
+          "id": "gateway-3",
+          "conns": 3334,
+          "aps": 0,
+          "sent": 3334,
+          "mem": 286
+        }
+      ],
+      "lag": [
+        0
+      ]
+    },
+    {
+      "at": 1790456243809,
+      "gateways": [
+        {
+          "id": "gateway-1",
+          "conns": 3333,
+          "aps": 0,
+          "sent": 0,
+          "mem": 267
+        },
+        {
+          "id": "gateway-2",
+          "conns": 3333,
+          "aps": 0,
+          "sent": 3333,
+          "mem": 289
+        },
+        {
+          "id": "gateway-3",
+          "conns": 3334,
+          "aps": 0,
+          "sent": 0,
+          "mem": 286
+        }
+      ],
+      "lag": [
+        0
+      ]
+    },
+    {
+      "at": 1790456244826,
+      "gateways": [
+        {
+          "id": "gateway-1",
+          "conns": 3333,
+          "aps": 0,
+          "sent": 0,
+          "mem": 267
+        },
+        {
+          "id": "gateway-2",
+          "conns": 3333,
+          "aps": 0,
+          "sent": 0,
+          "mem": 289
+        },
+        {
+          "id": "gateway-3",
+          "conns": 3334,
+          "aps": 0,
+          "sent": 0,
+          "mem": 286
+        }
+      ],
+      "lag": [
+        0
+      ]
+    },
+    {
+      "at": 1790456245813,
+      "gateways": [
+        {
+          "id": "gateway-1",
+          "conns": 3333,
+          "aps": 0,
+          "sent": 0,
+          "mem": 267
+        },
+        {
+          "id": "gateway-2",
+          "conns": 3333,
+          "aps": 0,
+          "sent": 0,
+          "mem": 289
+        },
+        {
+          "id": "gateway-3",
+          "conns": 3334,
+          "aps": 0,
+          "sent": 0,
+          "mem": 286
+        }
+      ],
+      "lag": [
+        0
+      ]
+    },
+    {
+      "at": 1790456247287,
+      "gateways": [
+        {
+          "id": "gateway-1",
+          "conns": 3333,
+          "aps": 0,
+          "sent": 4333,
+          "mem": 271
+        },
+        {
+          "id": "gateway-2",
+          "conns": 3333,
+          "aps": 0,
+          "sent": 6666,
+          "mem": 290
+        },
+        {
+          "id": "gateway-3",
+          "conns": 3334,
+          "aps": 0,
+          "sent": 4834,
+          "mem": 287
+        }
+      ],
+      "lag": [
+        0
+      ]
+    },
+    {
+      "at": 1790456248300,
+      "gateways": [
+        {
+          "id": "gateway-1",
+          "conns": 3333,
+          "aps": 0,
+          "sent": 2333,
+          "mem": 283
+        },
+        {
+          "id": "gateway-2",
+          "conns": 3333,
+          "aps": 0,
+          "sent": 0,
+          "mem": 290
+        },
+        {
+          "id": "gateway-3",
+          "conns": 3334,
+          "aps": 0,
+          "sent": 1834,
+          "mem": 286
+        }
+      ],
+      "lag": []
+    }
+  ]
+}

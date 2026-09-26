@@ -1,0 +1,7 @@
+apiVersion: 1
+providers:
+  - name: buzzarena
+    folder: BuzzArena
+    type: file
+    options:
+      path: /var/lib/grafana/dashboards

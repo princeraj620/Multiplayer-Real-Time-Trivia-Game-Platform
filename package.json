@@ -1,0 +1,27 @@
+{
+  "name": "buzzarena",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Multiplayer real-time trivia: WebSockets, leader election, failover, auth and observability",
+  "scripts": {
+    "test": "node --test --test-concurrency=1 tests/e2e.test.mjs",
+    "bots": "node scripts/bots.mjs",
+    "demo:game": "node scripts/demo-game.mjs",
+    "demo:failover": "node scripts/demo-failover.mjs",
+    "demo:zombie": "node scripts/demo-zombie.mjs",
+    "demo:gateway": "node scripts/demo-gateway.mjs",
+    "demo:consensus": "node scripts/demo-consensus.mjs",
+    "demo:security": "node scripts/demo-security.mjs",
+    "demo:trace": "node scripts/demo-trace.mjs",
+    "load": "node load-tests/game-night.mjs",
+    "rotate:data-key": "docker compose run --rm -e SERVICE=rotate-data-key seed"
+  },
+  "devDependencies": {
+    "jose": "^6.2.12",
+    "ws": "^8.18.0"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

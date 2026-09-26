@@ -1,0 +1,67 @@
+# Alerts: each one answers "what should wake someone up?". Thresholds are small on purpose so
+# the demos trigger them within seconds.
+groups:
+  - name: game
+    rules:
+      - alert: LiveGameWithoutLeader
+        expr: max(buzz_live_games_without_leader) > 0
+        for: 10s
+        labels: { severity: critical }
+        annotations:
+          summary: A live game has had no leader heartbeat for over 10 s (engines down or etcd has no majority).
+      - alert: SlowQuestionFanout
+        expr: histogram_quantile(0.95, sum by (le) (rate(buzz_ws_fanout_seconds_bucket{type="question"}[2m]))) > 0.5
+        for: 30s
+        labels: { severity: warning }
+        annotations:
+          summary: 5% of players get questions more than 500 ms late.
+      - alert: AnswerStreamBacklog
+        expr: max(buzz_engine_answer_stream_lag) > 2000
+        for: 20s
+        labels: { severity: warning }
+        annotations:
+          summary: Over 2,000 answers are waiting in the stream; the leader engine is falling behind.
+      - alert: StaleLeaderFenced
+        expr: sum(increase(buzz_engine_fenced_writes_total[5m])) > 0
+        labels: { severity: info }
+        annotations:
+          summary: An old leader tried to write after losing leadership and was rejected by its fencing token.
+  - name: infrastructure
+    rules:
+      - alert: GatewayDown
+        expr: up{job="gateways"} == 0
+        for: 10s
+        labels: { severity: warning }
+        annotations:
+          summary: A WebSocket gateway is down; its players reconnect to the others.
+      - alert: EngineDown
+        expr: up{job="engines"} == 0
+        for: 10s
+        labels: { severity: warning }
+        annotations:
+          summary: A game engine is down; its games fail over after the lease expires.
+      - alert: EtcdMemberDown
+        expr: up{job="etcd"} == 0
+        for: 10s
+        labels: { severity: warning }
+        annotations:
+          summary: An etcd member is down. The cluster still works while 2 of 3 are up.
+      - alert: EtcdNoLeader
+        expr: max(etcd_server_has_leader) == 0 or count(up{job="etcd"} == 1) < 2
+        for: 5s
+        labels: { severity: critical }
+        annotations:
+          summary: etcd has no Raft leader (no majority). No new game leaders can be elected.
+  - name: security
+    rules:
+      - alert: RefreshTokenReuse
+        expr: sum(increase(buzz_auth_refresh_reuse_detected_total[10m])) > 0
+        labels: { severity: critical }
+        annotations:
+          summary: A refresh token was used twice. It was probably stolen; that login's sessions were revoked.
+      - alert: ManyFailedLogins
+        expr: sum(rate(buzz_auth_logins_total{result="failed"}[1m])) > 1
+        for: 30s
+        labels: { severity: warning }
+        annotations:
+          summary: More than 1 failed login per second (password guessing?).

@@ -1,0 +1,112 @@
+# BuzzArena edge: TLS termination, WebSocket upgrade, load balancing, per-IP limits, security headers.
+# Values in ${...} come from environment variables (see docker-compose.yml and .env.example).
+
+limit_req_zone  $binary_remote_addr zone=api_per_ip:10m rate=${API_RATE_PER_IP}r/s;
+limit_req_zone  $binary_remote_addr zone=auth_per_ip:10m rate=${AUTH_RATE_PER_IP}r/s;
+limit_conn_zone $binary_remote_addr zone=ws_per_ip:10m;
+limit_req_status 429;
+limit_conn_status 429;
+
+map $http_upgrade $connection_upgrade { default upgrade; '' close; }
+
+upstream auth_upstream {
+    zone auth 64k;
+    server ${AUTH1}  max_fails=3 fail_timeout=10s;
+    server ${AUTH2}  max_fails=3 fail_timeout=10s;
+    keepalive 16;
+}
+upstream lobby_upstream {
+    zone lobby 64k;
+    least_conn;
+    server ${LOBBY1} max_fails=3 fail_timeout=10s;
+    server ${LOBBY2} max_fails=3 fail_timeout=10s;
+    keepalive 16;
+}
+# WebSockets are long-lived, so balance by number of open connections, not by requests.
+# max_fails=0 on purpose: Nginx's passive health check only "forgives" a failed server when a request
+# to it FINISHES, and a WebSocket never finishes. With max_fails=1, a gateway that crashed and came
+# back got almost no new players (found in the load test). Instead, a connection to a dead gateway
+# fails fast (refused, or the 1 s proxy_connect_timeout) and Nginx tries the next one.
+upstream gateway_upstream {
+    zone gateways 64k;
+    least_conn;
+    server ${GATEWAY1} max_fails=0;
+    server ${GATEWAY2} max_fails=0;
+    server ${GATEWAY3} max_fails=0;
+}
+
+# Plain HTTP only redirects to HTTPS.
+server {
+    listen ${HTTP_PORT};
+    server_name _;
+    location = /nginx-health { return 200 "ok\n"; }
+    location / { return 301 https://$host:${PUBLIC_HTTPS_PORT}$request_uri; }
+}
+
+server {
+    listen ${HTTPS_PORT} ssl;
+    http2 on;
+    server_name localhost;
+
+    ssl_certificate     ${CERT_DIR}/localhost.crt;
+    ssl_certificate_key ${CERT_DIR}/localhost.key;
+    ssl_protocols       TLSv1.2 TLSv1.3;
+    ssl_prefer_server_ciphers off;
+    ssl_session_cache   shared:SSL:10m;
+
+    # Security headers
+    add_header Strict-Transport-Security "max-age=31536000" always;
+    add_header X-Content-Type-Options "nosniff" always;
+    add_header Referrer-Policy "no-referrer" always;
+    add_header X-Frame-Options "DENY" always;
+    add_header Content-Security-Policy "default-src 'self'; connect-src 'self' wss://$host:${PUBLIC_HTTPS_PORT}; img-src 'self' data:; style-src 'self' 'unsafe-inline'; font-src 'self'; frame-ancestors 'none'; base-uri 'self'" always;
+
+    root  ${WEB_ROOT};
+    index index.html;
+    client_max_body_size 64k;
+
+    proxy_http_version 1.1;
+    proxy_set_header Host              $host;
+    proxy_set_header X-Real-IP         $remote_addr;
+    proxy_set_header X-Forwarded-For   $proxy_add_x_forwarded_for;
+    proxy_set_header X-Forwarded-Proto https;
+    proxy_set_header X-Request-Id      $request_id;
+    proxy_set_header Connection        "";
+
+    location /api/auth/ {
+        limit_req zone=auth_per_ip burst=${AUTH_BURST_PER_IP} nodelay;
+        proxy_pass http://auth_upstream;
+        proxy_next_upstream error timeout http_502 http_503;
+    }
+
+    location /api/ {
+        limit_req zone=api_per_ip burst=${API_BURST_PER_IP} nodelay;
+        proxy_pass http://lobby_upstream;
+        proxy_next_upstream error timeout http_502 http_503;
+    }
+
+    # WebSockets: upgrade the connection and keep it open (heartbeats every 25 s keep it busy).
+    location = /ws {
+        limit_conn ws_per_ip ${WS_CONN_PER_IP};
+        proxy_pass http://gateway_upstream;
+        proxy_set_header Upgrade    $http_upgrade;
+        proxy_set_header Connection $connection_upgrade;
+        proxy_set_header Origin     $http_origin;
+        proxy_read_timeout 75s;
+        proxy_send_timeout 75s;
+        proxy_buffering off;
+        proxy_connect_timeout 1s;
+        proxy_next_upstream error timeout;
+        proxy_next_upstream_tries 3;
+    }
+
+    location = /nginx-health { access_log off; return 200 "ok\n"; }
+
+    location /assets/ {
+        expires 1y;
+        add_header Cache-Control "public, immutable" always;
+        add_header Strict-Transport-Security "max-age=31536000" always;
+        try_files $uri =404;
+    }
+    location / { try_files $uri /index.html; }
+}
